@@ -45,6 +45,7 @@ fun HelloWorld(modifier: Modifier = Modifier) {
     ) {
         Icon(Icons.Default.Favorite, contentDescription = null)
         Text("Hello, World!")
+        Text("This seems to be working well! 🚀")
     }
 }
 
