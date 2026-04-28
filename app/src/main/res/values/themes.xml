@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  WHAT:
+  XML-based theme for the pre-Compose window chrome (status bar, navigation bar).
+  The NoActionBar parent removes the legacy action bar so Compose controls the full window.
+  Referenced by android:theme in AndroidManifest.xml.
+
+  NEEDED: Yes
+  The app crashes on launch if this theme is missing.
+
+  MAINTAINANCE: Rarely changed.
+  Edge-to-edge apps (using enableEdgeToEdge()) mostly leave this alone.
+  note: If you need a specific status bar color before Compose draws, set `windowStatusBarColor` here.
+-->
+<resources>
+    <!-- Base application theme -->
+    <style name="Theme.MyEnergyBar" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

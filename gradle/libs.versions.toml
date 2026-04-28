@@ -1,0 +1,51 @@
+# WHAT:
+# Version catalog — single source of truth for all dependency versions, library
+# coordinates, and plugin IDs.
+# Libraries here are referenced as `libs.*` in all `build.gradle.kts` files.
+#
+# NEEDED: Strongly recommended.
+# It's the modern standard and prevents version drift across modules.
+#
+# MAINTAINANCE:
+# This is your primary dependency management file.
+# To upgrade a library, change its version here.
+# Use `gradle dependencyUpdates` (with the Versions plugin) to check for outdated dependencies.
+
+
+# NOTE: This section lists pkg versions (using arbitrary names).
+# .. Entries here are used in `version.ref` in `[libraries]` section below.
+[versions]
+# Android Gradle Plugin — builds, packages, and signs the APK
+agp = "8.7.3"
+# Kotlin compiler
+kotlin = "2.3.0"
+# Bridges Activity lifecycle to Compose's setContent{}
+activityCompose = "1.10.0"
+# Compose BOM — aligns all androidx.compose.* library versions together
+# (so I don't have to manually manage version of all android compose libs)
+composeBom = "2024.12.01"
+
+# NOTE: This section lists the libraries to install.
+# .. Find official libs at <https://maven.google.com/web/index.html>
+# .. Find more JetpackCompose libs at <https://developer.android.com/jetpack/androidx/explorer>
+[libraries]
+# Provides ComponentActivity.setContent{} to host Compose UI in an Activity
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+# BOM artifact — import as a platform() dep to pin all Compose library versions at once
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+# Layout inspector and interactive preview support (debug builds only)
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+# @Preview annotation and preview renderer used in the IDE
+# FIXME: do I need that?
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+# Material3 components (Text, Icon, Button, etc.) and built-in icon set
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# NOTE: This section lists Gradle build plugins.
+[plugins]
+# Android Gradle Plugin — required to build Android apps/libraries
+android-application = { id = "com.android.application", version.ref = "agp" }
+# Kotlin Android plugin — enables Kotlin compilation targeting Android
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+# Kotlin Compose compiler plugin — required when using Jetpack Compose with Kotlin 2.x
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

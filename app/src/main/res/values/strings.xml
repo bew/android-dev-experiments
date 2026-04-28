@@ -1,0 +1,15 @@
+<!--
+  WHAT:
+  String resources, centralizes all user-facing text to enable localization.
+
+  NEEDED: Yes.
+  (at least `app_name` is required by the app manifest)
+
+  MAINTAINANCE:
+  Add all user-facing strings here instead of hardcoding them in Kotlin/XML.
+  To add a translation, create `res/values-<locale>/strings.xml`.
+  (e.g. res/values-fr/strings.xml for French)
+-->
+<resources>
+    <string name="app_name">My Energy Bar!</string>
+</resources>

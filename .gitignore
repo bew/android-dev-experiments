@@ -1,0 +1,14 @@
+# Gradle build outputs and caches
+.gradle/
+build/
+**/build/
+
+# Local SDK/JDK paths (machine-specific)
+local.properties
+
+# Android Studio project files
+.idea/
+*.iml
+
+# OS noise
+.DS_Store
