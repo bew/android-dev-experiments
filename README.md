@@ -30,6 +30,7 @@ just install  # install on connected device
    adb pair <ip>:<pairing-port>
    # Enter the 6-digit code when prompted
    ```
+
    > [!WARNING]
    > Note that the port for `adb pair` is different from the port for `adb connect` !
 

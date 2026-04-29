@@ -1,14 +1,14 @@
 # Copied @2026-04-28 from https://github.com/NixOS/nixpkgs/pull/514623 (MINE!)
 {
   lib,
-  stdenvNoCC,
-  fetchurl,
-  autoPatchelfHook,
-  versionCheckHook,
-  unar,
-  # Native libraries required by the bundled JBR and native JNI libs
   stdenv,
+  fetchurl,
   zlib,
+  darwin ? null,
+  versionCheckHook,
+  autoPatchelfHook ? null,
+  fixDarwinDylibNames ? null,
+  unar ? null,
 }:
 
 let
@@ -33,7 +33,10 @@ let
     .${system};
 in
 
-stdenvNoCC.mkDerivation (finalAttrs: {
+assert stdenv.isLinux -> autoPatchelfHook != null;
+assert stdenv.isDarwin -> darwin != null && fixDarwinDylibNames != null && unar != null;
+
+stdenv.mkDerivation (finalAttrs: {
   pname = "kotlin-lsp";
   version = "262.4739.0";
   __structuredAttrs = true;
@@ -45,7 +48,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   };
 
   # Add support for .sit archive using unar
-  preUnpack = ''
+  preUnpack = lib.optionalString stdenv.isDarwin ''
     _tryUnar() {
       if ! [[ "$curSrc" =~ \.sit$ ]]; then return 1; fi
       ${lib.getExe unar} "$curSrc"
@@ -56,8 +59,11 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   dontConfigure = true;
   dontBuild = true;
 
-  # X11/Wayland/sound/font libs are GUI-only backends in the bundled JBR; the LSP server itself
-  # runs headless so these are safe to ignore.
+  # Stripping breaks the binary on Darwin (code signing issues)
+  dontStrip = stdenv.isDarwin;
+
+  # (on Linux only) X11/Wayland/sound/font libs are GUI-only backends in the bundled JBR;
+  # the LSP server itself runs headless so these are safe to ignore.
   autoPatchelfIgnoreMissingDeps = [
     "libasound.so.2"
     "libc.musl-x86_64.so.1"
@@ -71,9 +77,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     "libXtst.so.6"
     "libxkbcommon.so.0"
   ];
-  nativeBuildInputs = [
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = (
+    lib.optionals stdenv.isLinux [ autoPatchelfHook ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+      unar
+      darwin.autoSignDarwinBinariesHook
+    ]
+  );
 
   buildInputs = [
     # for native JNI libs (rocksdbjni, filewatcher),
