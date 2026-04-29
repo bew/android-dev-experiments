@@ -21,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import dev.bew.myenergybar.ui.theme.MyEnergyBarTheme
 
 class MainActivity : ComponentActivity() {
@@ -45,14 +44,6 @@ fun HelloWorld(modifier: Modifier = Modifier) {
     ) {
         Icon(Icons.Default.Favorite, contentDescription = null)
         Text("Hello, World!")
-        Text("This seems to be working well! 🚀")
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun HelloWorldPreview() {
-    MyEnergyBarTheme {
-        HelloWorld()
+        Text("👉 This seems to be working really well! 🚀")
     }
 }
