@@ -1,7 +1,7 @@
 // WHAT:
-// An example helloworld screen, responsible to render the UI elements of that screen.
+// An example screen, responsible to render the UI elements of that screen.
 
-package dev.bew.helloworld.ui.hello
+package bew.devplayground.experiments.helloworld.ui.hello
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -40,7 +40,7 @@ fun HelloScreen() {
     ) {
         TopBottomElem(
             text = "Top element",
-            modifier = Modifier.fillMaxWidth().background(Color.Red)
+            modifier = Modifier.fillMaxWidth().background(Color.Red),
         )
 
         // Weighted spacers push the other components away, since there are 2 weighted spacers,
@@ -97,7 +97,10 @@ fun SimpleCounter(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun TopBottomElem(text: String, modifier: Modifier = Modifier) {
+fun TopBottomElem(
+    text: String,
+    modifier: Modifier = Modifier,
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,

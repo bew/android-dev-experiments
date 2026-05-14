@@ -14,14 +14,15 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "dev.bew.helloworld"
+    namespace = "bew.devplayground"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "dev.bew.helloworld"
+        applicationId = "bew.devplayground"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -52,4 +53,6 @@ dependencies {
     implementation(libs.google.material)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.timber)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.nav.compose)
 }

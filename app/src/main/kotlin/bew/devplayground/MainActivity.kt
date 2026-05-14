@@ -7,7 +7,7 @@
 // NEEDED: Yes — required entry point.
 // Every Android app needs at least one Activity declared as the launcher in `AndroidManifest.xml`.
 
-package dev.bew.helloworld
+package bew.devplayground
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,14 +15,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.material3.Surface
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import dev.bew.helloworld.ui.theme.MyAppTheme
-import dev.bew.helloworld.ui.hello.HelloScreen
-import timber.log.Timber
+import bew.devplayground.nav.AppNavHost
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,15 +27,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyAppTheme {
-                // For this example, we only add padding for the bottom navigation bar, not for the
-                // top status bar.
-                // To handle all bars, use `.systemBars` or just use a Scaffold in the Screen.
-                val modifier = Modifier.windowInsetsPadding(WindowInsets.navigationBars)
+                val modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars)
                 // This surface acts as the "color-aware root" for the whole composition tree.
                 // Sets `LocalContentColor` so all children (Text, Icon..) get correct fg colors.
                 // Without this, text in the tree defaults to black even in dark mode.
                 Surface(modifier = modifier.fillMaxSize()) {
-                    HelloScreen()
+                    AppNavHost(modifier = modifier.fillMaxSize())
                 }
             }
         }

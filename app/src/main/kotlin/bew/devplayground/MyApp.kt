@@ -7,7 +7,7 @@
 // MAINTENANCE:
 // Add any other one-time app-wide setup here (e.g. dependency injection, crash reporting).
 
-package dev.bew.helloworld
+package bew.devplayground
 
 import android.app.Application
 import timber.log.Timber
@@ -26,7 +26,7 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         if (DEBUG) {
-            Timber.plant(PrefixedDebugTree("MYAPP"))
+            Timber.plant(PrefixedDebugTree("DEVPLAY"))
         }
         Timber.d("The app started!")
     }

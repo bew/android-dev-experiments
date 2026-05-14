@@ -1,7 +1,7 @@
 _default:
   just --list
 
-pkg-name := "dev.bew.helloworld"
+pkg-name := "bew.devplayground"
 
 # Build debug APK
 build:
@@ -36,10 +36,10 @@ start-ui:
   @ # 👉 The real solution is `--keep-active` from <Genymobile/scrcpy#PR6787>
   @ # (not released yet @2026-05-01)
 
-# Show all logs of the running app (filter by MYAPP)
+# Show all logs of the running app (filter by DEVPLAY)
 logs:
-  @ # adb logcat --pid=$(adb shell pidof -s {{pkg-name}}) -v color | grep MYAPP
-  adb logcat -v color | grep MYAPP
+  @ # adb logcat --pid=$(adb shell pidof -s {{pkg-name}}) -v color | grep DEVPLAY
+  adb logcat -v color | grep DEVPLAY
 alias l := logs
 
 # -----------------------------------------------------------------

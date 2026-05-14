@@ -9,7 +9,7 @@
 // MAINTAINANCE:
 // To add brand colors, define color schemes here directly.
 
-package dev.bew.helloworld.ui.theme
+package bew.devplayground
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

@@ -1,15 +1,6 @@
-# Hello World app
+# Dev Playground
 
-A simple Android app built with Jetpack Compose.
-
-Features:
-- Full Nix-based dev environment
-- `just`-based project helpers to build/install/run/watch the app/watch logs
-- Auto dark/light colorscheme based on the system
-- Logging setup using `Timber`, initialized early
-- Setup with `MainActivity`, `MainScreen`, and a few components
-- A `SimpleCounter` component with _internal_ state
-- Comments everywhere explaining things
+TODO!
 
 ## Requirements
 

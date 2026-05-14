@@ -26,6 +26,8 @@ activityCompose = "1.10.0"
 composeBom = "2024.12.01"
 # Necessary for `Theme.Material3.DayNight.*` themes
 google-material = "1.13.0"
+nav-compose = "2.9.8"
+kotlinx-serialization = "1.8.1"
 
 # NOTE: This section lists the libraries to install.
 # .. Find official libs at <https://maven.google.com/web/index.html>
@@ -43,6 +45,8 @@ androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 # Necessary for `Theme.Material3.DayNight.*` themes
 google-material = { group = "com.google.android.material", name = "material", version.ref = "google-material" }
+nav-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "nav-compose" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 
 # Timber — lightweight logging library for Android
 timber = { group = "com.jakewharton.timber", name = "timber", version = "5.0.1" }
@@ -55,3 +59,5 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 # Kotlin Compose compiler plugin — required when using Jetpack Compose with Kotlin 2.x
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# Kotlin Serialization plugin — enables @Serializable annotation processing
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
