@@ -4,4 +4,4 @@
 log_filters = ["DEVPLAY"]
 
 # Extra arguments passed to `scrcpy`
-scrcpy_args = ["--new-display", "--no-audio"] # TODO: add --keep-awake when available in my env!
+scrcpy_args = ["--new-display", "--keep-active", "--no-audio"]
