@@ -15,8 +15,10 @@ import bew.devplayground.home.HomeScreen
 
 @Composable
 fun AppNavHost(modifier: Modifier = Modifier) {
-    // NavController drives all navigation.
-    // rememberNavController ties its lifetime to composition.
+    // The NavController is the central coordinator for managing navigation between destinations.
+    // The controller offers methods for navigating between destinations, handling deep links,
+    // managing the back stack, and more.
+    // ref: https://developer.android.com/guide/navigation
     val navController = rememberNavController()
 
     // A NavHost is a container that shows one destination at a time.

@@ -16,4 +16,3 @@ sealed interface Route {
     @Serializable
     data object HelloWorld : Route
 }
-
